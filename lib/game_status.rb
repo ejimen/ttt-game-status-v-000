@@ -43,12 +43,11 @@ def full?(board)
   board.all? {|i| i == "X" || i == "O"}
 end
 
-def draw?(board)
-  if !won?(board) && full?(board)
+#draw
+def draw?
+  if (won? == false && full? == true)
     return true
-  elsif !won?(board) && !full?(board)
-    return false
-  else won?(board)
+  else
     return false
   end
 end
