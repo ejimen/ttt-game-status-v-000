@@ -48,7 +48,7 @@ def draw?(board)
   end
   end
 
-puts draw?(board)
+
 
 
 def over?(board)
