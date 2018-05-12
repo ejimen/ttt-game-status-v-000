@@ -1,68 +1,61 @@
 # Helper Method
-
 def position_taken?(board, index)
   !(board[index].nil? || board[index] == " ")
 end
 
-
-
 # Define your WIN_COMBINATIONS constant
 WIN_COMBINATIONS = [
-[0, 1, 2], # Top row
-[3, 4, 5], # Middle row
-[6, 7, 8], # Bottom row
-[0, 3, 6], # Left vertical
-[1, 4, 7], # Middle vertical
-[2, 5, 8], # Right vertical
-[0, 4, 8], # Upper left diagonal
-[2, 4, 6] # Upper right diagonal
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [6, 4, 2]
 ]
 
-
-#def won
 def won?(board)
-winner = []
-empty_board = board.all? {|x| x == " "}
-WIN_COMBINATIONS.each do |sub_array|
-    if empty_board || full?(board)
-      return false
-    elsif sub_array.all? { |value| board[value] =="X" } || sub_array.all? { |value| board[value] =="O" }
-      winner = sub_array
+  WIN_COMBINATIONS.each {|win_combo|
+    index_0 = win_combo[0]
+    index_1 = win_combo[1]
+    index_2 = win_combo[2]
+
+    position_1 = board[index_0]
+    position_2 = board[index_1]
+    position_3 = board[index_2]
+
+    if position_1 == "X" && position_2 == "X" && position_3 == "X"
+      return win_combo
+    elsif position_1 == "O" && position_2 == "O" && position_3 == "O"
+      return win_combo
     end
-  end
-  winner
+  }
+  return false
 end
-
-
 
 def full?(board)
-  board.all? {|i| i == "X" || i == "O"}
+  board.all? {|index| index == "X" || index == "O"}
 end
 
-#draw
 def draw?(board)
   if !won?(board) && full?(board)
-    return false
-  elsif !won?(board) && !full?(board) || !won?(board)
-    return true
-  end
- end
-
-
-def over?(board)
-  if draw?(board) || won?(board) || full?(board)
     return true
   else
     return false
   end
 end
 
-def winner(board)
-  #if won?(board)
-  #  return board[won?(board)[0]]
-  #end
-#end
-index = []
+def over?(board)
+  if won?(board) || full?(board) || draw?(board)
+    return true
+  else
+    return false
+  end
+end
+
+def winner (board)
+  index = []
   index = won?(board)
   if index == false
     return nil
