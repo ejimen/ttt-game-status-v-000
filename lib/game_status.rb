@@ -48,9 +48,6 @@ def draw?(board)
   end
   end
 
-draw?(board)
-end
-
 
 
 
