@@ -8,14 +8,14 @@ end
 
 # Define your WIN_COMBINATIONS constant
 WIN_COMBINATIONS = [
-  [0,1,2], # top_row
-  [3,4,5], # middle_row
-  [6,7,8], # bottom_row
-  [3,3,6], # left_column
-  [1,4,7], # center_column
-  [2,5,8], # right_column
-  [0,4,8], # left_diagnol
-  [6,4,2], # right_diagnol
+[0, 1, 2], # Top row
+[3, 4, 5], # Middle row
+[6, 7, 8], # Bottom row
+[0, 3, 6], # Left vertical
+[1, 4, 7], # Middle vertical
+[2, 5, 8], # Right vertical
+[0, 4, 8], # Upper left diagonal
+[2, 4, 6] # Upper right diagonal
 ]
 
 
