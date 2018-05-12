@@ -3,6 +3,7 @@ def position_taken?(board, index)
   !(board[index].nil? || board[index] == " ")
 end
 
+
 # Define your WIN_COMBINATIONS constant
 WIN_COMBINATIONS = [
   [0, 1, 2],
@@ -14,6 +15,7 @@ WIN_COMBINATIONS = [
   [0, 4, 8],
   [6, 4, 2]
 ]
+
 
 def won?(board)
   WIN_COMBINATIONS.each {|win_combo|
@@ -34,9 +36,11 @@ def won?(board)
   return false
 end
 
+
 def full?(board)
   board.all? {|index| index == "X" || index == "O"}
 end
+
 
 def draw?(board)
   if !won?(board) && full?(board)
@@ -46,6 +50,7 @@ def draw?(board)
   end
 end
 
+
 def over?(board)
   if won?(board) || full?(board) || draw?(board)
     return true
@@ -53,6 +58,7 @@ def over?(board)
     return false
   end
 end
+
 
 def winner (board)
   index = []
