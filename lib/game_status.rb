@@ -21,21 +21,16 @@ WIN_COMBINATIONS = [
 
 #def won
 def won?(board)
-  WIN_COMBINATIONS.each do |win_combination|
-    win_index_1 = win_combination[0]
-    win_index_2 = win_combination[1]
-    win_index_3 = win_combination[2]
-
-    position_1 = board[win_index_1] #load the value of the board at win_index_1
-position_2 = board[win_index_2] #load the value if the board at win_index_2
-position_3 = board[win_index_3] #load the value of the board at win_index_3
-
-position_1 == position_2 && position_2 == position_3 && position_taken?(board, win_index_1)
-#if position_1 == "X" && position_2 == "X" && position_3 == "X"
-  #return win_combination #return the win_combination indexes that won.
-  #else
-  #false
-end
+winner = []
+empty_board = board.all? {|x| x == " "}
+WIN_COMBINATIONS.each do |sub_array|
+    if empty_board || full?(board)
+      return false
+    elsif sub_array.all? { |value| board[value] =="X" } || sub_array.all? { |value| board[value] =="O" }
+      winner = sub_array
+    end
+  end
+  winner
 end
 
 
