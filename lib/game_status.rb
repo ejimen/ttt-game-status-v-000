@@ -26,20 +26,18 @@ def won?(board)
     win_index_2 = win_combination[1]
     win_index_3 = win_combination[2]
 
-    if (board[win_index1] == "X" && board[win_index2] == "X" && board[win_index3] == "X")
-            return win_combo
-          elsif (board[win_index1] == "O" && board[win_index2] == "O" && board[win_index3] == "O")
-            return win_combo
-          end
-        end
-        if (board.none? {|position| position == " " || position == "" || position == nil})
-          return false
-        elsif (board == [" ", " ", " ", " ", " ", " ", " ", " ", " "] || board == ["","","","","","","","",""]) #
-          return false
-        else
-          return false
-        end
-      end
+    position_1 = board[win_index_1] #load the value of the board at win_index_1
+position_2 = board[win_index_2] #load the value if the board at win_index_2
+position_3 = board[win_index_3] #load the value of the board at win_index_3
+
+position_1 == position_2 && position_2 == position_3 && position_taken?(board, win_index_1)
+#if position_1 == "X" && position_2 == "X" && position_3 == "X"
+  #return win_combination #return the win_combination indexes that won.
+  #else
+  #false
+end
+end
+
 
 
 def full?(board)
